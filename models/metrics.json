@@ -1,0 +1,70 @@
+{
+  "dataset": {
+    "rows": 600,
+    "at_risk_share": 0.3566666666666667,
+    "train_rows": 480,
+    "test_rows": 120,
+    "type": "synthetic"
+  },
+  "models": {
+    "Logistic Regression": {
+      "accuracy": 0.7083333333333334,
+      "precision": 0.5714285714285714,
+      "recall": 0.7441860465116279,
+      "f1": 0.6464646464646465,
+      "roc_auc": 0.7955300513440048,
+      "confusion_matrix": [
+        [
+          53,
+          24
+        ],
+        [
+          11,
+          32
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": 0.7583333333333333,
+      "precision": 0.6666666666666666,
+      "recall": 0.6511627906976745,
+      "f1": 0.6588235294117647,
+      "roc_auc": 0.8106312292358804,
+      "confusion_matrix": [
+        [
+          63,
+          14
+        ],
+        [
+          15,
+          28
+        ]
+      ]
+    }
+  },
+  "deployed_model": "Logistic Regression",
+  "cv_f1_mean": 0.6315554067180345,
+  "cv_f1_std": 0.023007472340522556,
+  "coefficients": {
+    "study_hours_week": -0.2746628574593251,
+    "attendance_pct": -0.35656979428621666,
+    "prev_grade": -0.8042168528643019,
+    "absences": 0.42806173192111163,
+    "past_failures": 0.3557312910805798,
+    "assignment_pct": -0.48462706657749516,
+    "sleep_hours": 0.041529328896529265,
+    "parental_support": -0.08462256523994749,
+    "internet_access": -0.25875762227260257
+  },
+  "rf_importance": {
+    "study_hours_week": 0.11890249923089652,
+    "attendance_pct": 0.19218962913428048,
+    "prev_grade": 0.2455724909161329,
+    "absences": 0.09604534641264119,
+    "past_failures": 0.03724979488493648,
+    "assignment_pct": 0.16945997617706962,
+    "sleep_hours": 0.0874852757828847,
+    "parental_support": 0.03706626934393342,
+    "internet_access": 0.0160287181172247
+  }
+}

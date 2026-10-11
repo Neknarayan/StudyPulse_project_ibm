@@ -54,6 +54,8 @@ def generate(n=600, seed=42):
 
 if __name__ == "__main__":
     out = Path(__file__).resolve().parents[1] / "data" / "students.csv"
+    out.parent.mkdir(parents=True, exist_ok=True)
     df = generate()
     df.to_csv(out, index=False)
     print(f"Wrote {len(df)} rows to {out}  (at-risk share: {df.at_risk.mean():.1%})")
+
