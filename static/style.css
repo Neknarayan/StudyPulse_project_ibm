@@ -256,3 +256,36 @@ a:hover { text-decoration: underline; }
   main { padding: 20px 16px; }
   .g2, .g3, .g4, .predict-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Concept Notes Components ───────────────────────────────── */
+.btn-doc {
+  display: inline-flex;
+  align-items: center;
+  background: var(--brand-btn);
+  color: #fff !important;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.btn-doc:hover { background: #283e58; }
+.btn-doc-alt {
+  background: #0f766e;
+}
+.btn-doc-alt:hover { background: #115e59; }
+
+.wf-step {
+  flex: 1;
+  min-width: 120px;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+}
+.wf-step strong { display: block; font-size: 13px; color: var(--ink); margin-bottom: 2px; }
+.wf-step small { font-size: 11.5px; color: var(--mute); }
+.wf-arrow { color: #94a3b8; font-weight: bold; font-size: 16px; }
+

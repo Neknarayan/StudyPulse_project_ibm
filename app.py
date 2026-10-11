@@ -1,6 +1,6 @@
 """StudyPulse - Student Academic Risk Early-Warning System (Flask prototype)."""
 import pandas as pd
-from flask import Flask, abort, render_template, request
+from flask import Flask, abort, render_template, request, send_from_directory
 
 from src import risk
 from src.data_gen import FEATURES
@@ -102,5 +102,16 @@ def predict():
     return render_template("predict.html", vals=vals, result=result, page="predict")
 
 
+@app.route("/concept")
+def concept():
+    return render_template("concept.html", page="concept")
+
+
+@app.route("/docs/<path:filename>")
+def docs_file(filename):
+    return send_from_directory("docs", filename, as_attachment=True)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+

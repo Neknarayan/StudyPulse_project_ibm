@@ -2,7 +2,8 @@
 
 **IBM SkillsBuild Applied AI/ML Virtual Internship - Final Project**
 **SDG 4: Quality Education**
-Author: [YOUR NAME] - [YOUR COLLEGE]
+Author: Neknarayan - UIT-RGPV  
+GitHub: [https://github.com/Neknarayan/StudyPulse_project_ibm](https://github.com/Neknarayan/StudyPulse_project_ibm)
 
 ## What it does
 StudyPulse helps teachers and mentors find students who are likely to fail *before* exams, and tells them **why** each student was flagged and what support to offer.

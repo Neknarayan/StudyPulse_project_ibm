@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+  <div>
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+      <span class="pill" style="background:#e0e7ff;color:#3730a3;font-weight:600;">IBM SkillsBuild Virtual Internship</span>
+      <span class="pill" style="background:#dcfce7;color:#166534;font-weight:600;">SDG 4: Quality Education</span>
+      <span class="pill" style="background:#fef3c7;color:#92400e;font-weight:600;">Applied AI / ML</span>
+    </div>
+    <h2>Project Concept Note: StudyPulse</h2>
+    <p>Student Academic Risk Early-Warning System &bull; <strong>Neknarayan</strong> (UIT-RGPV)</p>
+  </div>
+  <div style="display:flex;gap:10px;">
+    <a href="/docs/Concept_Note_final_ibm_project.docx" class="btn-doc" download>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      Download DOCX
+    </a>
+    <a href="/docs/Final_Deliverable_PPT_ibm.pptx" class="btn-doc btn-doc-alt" download>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      Download PPTX
+    </a>
+  </div>
+</div>
+
+<div class="note">
+  This project directly implements the complete deliverable outlined in <strong>Concept_Note_final_ibm_project.docx</strong> for the IBM SkillsBuild Applied AI/ML Internship.
+</div>
+
+<!-- Project Metadata Cards -->
+<div class="grid g3" style="margin-bottom:18px;">
+  <div class="card">
+    <h4 style="color:var(--mute);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Author &amp; Institution</h4>
+    <p style="font-weight:600;font-size:15px;color:var(--ink);margin:0;">Neknarayan</p>
+    <p style="color:var(--mute);font-size:13px;margin:2px 0 0;">UIT-RGPV, Bhopal</p>
+  </div>
+  <div class="card">
+    <h4 style="color:var(--mute);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">United Nations SDG</h4>
+    <p style="font-weight:600;font-size:15px;color:#166534;margin:0;">Goal 4: Quality Education</p>
+    <p style="color:var(--mute);font-size:13px;margin:2px 0 0;">Inclusive &amp; equitable education, preventing dropouts</p>
+  </div>
+  <div class="card">
+    <h4 style="color:var(--mute);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">GitHub Repository</h4>
+    <p style="font-weight:600;font-size:14px;margin:0;">
+      <a href="https://github.com/Neknarayan/StudyPulse_project_ibm" target="_blank" style="color:var(--link);word-break:break-all;">StudyPulse_project_ibm</a>
+    </p>
+    <p style="color:var(--mute);font-size:13px;margin:2px 0 0;">Public Open-Source ML Pipeline</p>
+  </div>
+</div>
+
+<!-- Section 1 & 2: Problem & Solution -->
+<div class="grid g2" style="margin-bottom:18px;">
+  <div class="card">
+    <h3 style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px;">1. Problem Statement</h3>
+    <p style="color:#374151;line-height:1.65;font-size:13.5px;">
+      In many colleges, a student who is falling behind is noticed only <strong>after poor exam results</strong>, when there is little time left to intervene. Teachers handle large classes and cannot manually track every student's attendance, assignments, and study habits. This delays timely support and contributes to preventable course failures and dropouts, directly impeding progress toward <strong>SDG 4</strong>.
+    </p>
+  </div>
+  <div class="card">
+    <h3 style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px;">2. Proposed Solution</h3>
+    <p style="color:#374151;line-height:1.65;font-size:13.5px;">
+      <strong>StudyPulse</strong> is an AI-assisted early-warning web application. It ingests routine student indicators, applies a trained machine learning model to estimate each student's probability of failing, groups them into <strong>High (&ge;60%)</strong>, <strong>Medium (35&ndash;60%)</strong>, and <strong>Low (&lt;35%)</strong> risk, explains which factors drive the risk, and suggests practical support actions. An interactive what-if tool allows teachers to simulate risk adjustments.
+    </p>
+  </div>
+</div>
+
+<!-- Section 3: Objectives -->
+<div class="card" style="margin-bottom:18px;">
+  <h3 style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px;">3. Project Objectives</h3>
+  <div class="grid g2" style="gap:12px;">
+    <div style="background:#f9fafb;border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <strong style="color:var(--brand-btn);">Early Risk Detection:</strong>
+      <p style="margin-top:4px;color:#4b5563;font-size:13px;">Predict at-risk students before examinations using data readily available during the semester.</p>
+    </div>
+    <div style="background:#f9fafb;border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <strong style="color:var(--brand-btn);">Teacher Prioritisation:</strong>
+      <p style="margin-top:4px;color:#4b5563;font-size:13px;">Rank students by urgency so educators allocate limited counselling time where impact is highest.</p>
+    </div>
+    <div style="background:#f9fafb;border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <strong style="color:var(--brand-btn);">Transparent Explainability:</strong>
+      <p style="margin-top:4px;color:#4b5563;font-size:13px;">Explain every prediction in plain language instead of displaying a black-box numerical score.</p>
+    </div>
+    <div style="background:#f9fafb;border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <strong style="color:var(--brand-btn);">Actionable Support:</strong>
+      <p style="margin-top:4px;color:#4b5563;font-size:13px;">Map primary risk factors to practical, human-reviewed pedagogical interventions.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Section 4 & 5: Data & Methodology -->
+<div class="grid g2" style="margin-bottom:18px;">
+  <div class="card">
+    <h3 style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px;">4. Dataset &amp; Features</h3>
+    <p style="font-size:13px;color:#4b5563;margin-bottom:12px;">
+      Prototype uses <strong>600 synthetic student records</strong> generated by <code>src/data_gen.py</code> (~36% at-risk) with realistic academic correlations, allowing offline execution without privacy exposure:
+    </p>
+    <table style="font-size:12.5px;">
+      <thead>
+        <tr><th>Feature</th><th>Description</th><th>Typical Range</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>study_hours_week</code></td><td>Weekly independent study</td><td>0 &ndash; 25 hrs</td></tr>
+        <tr><td><code>attendance_pct</code></td><td>Class attendance rate</td><td>35 &ndash; 100%</td></tr>
+        <tr><td><code>prev_grade</code></td><td>Previous semester grade</td><td>0 &ndash; 20 scale</td></tr>
+        <tr><td><code>absences</code></td><td>Recorded absences</td><td>0 &ndash; 40 sessions</td></tr>
+        <tr><td><code>past_failures</code></td><td>Previous failed courses</td><td>0 &ndash; 3</td></tr>
+        <tr><td><code>assignment_pct</code></td><td>Homework completion</td><td>0 &ndash; 100%</td></tr>
+        <tr><td><code>sleep_hours</code></td><td>Average daily sleep</td><td>3.5 &ndash; 9.5 hrs</td></tr>
+        <tr><td><code>parental_support</code></td><td>Home support level</td><td>1 &ndash; 5 rating</td></tr>
+        <tr><td><code>internet_access</code></td><td>Connectivity at home</td><td>0 (No) / 1 (Yes)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3 style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px;">5. Methodology &amp; Pipeline</h3>
+    <ol style="padding-left:18px;line-height:1.75;font-size:13px;color:#374151;">
+      <li><strong>Data Generation &amp; Ingestion:</strong> Synthesize or load CSV; validate schemas.</li>
+      <li><strong>Exploratory Data Analysis:</strong> Examine correlations between attendance, grades, and risk.</li>
+      <li><strong>Train/Test Partitioning:</strong> Stratified 80/20 train/test split (480 train / 120 test).</li>
+      <li><strong>Feature Standardisation:</strong> Apply <code>StandardScaler</code> to eliminate scale biases.</li>
+      <li><strong>Model Training:</strong> Train balanced Logistic Regression and Random Forest benchmark.</li>
+      <li><strong>Evaluation:</strong> Calculate Accuracy, Precision, Recall, F1, ROC-AUC, &amp; 5-fold CV.</li>
+      <li><strong>Local Explanation:</strong> Explain predictions via linear feature contributions ($coef \times z$).</li>
+      <li><strong>Action Recommendations:</strong> Link top contributors to pedagogical interventions.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Section 6: System Workflow -->
+<div class="card" style="margin-bottom:18px;">
+  <h3 style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px;">6. System Workflow</h3>
+  <div class="workflow-flow" style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:12px 0;">
+    <div class="wf-step">
+      <strong>1. Student Data</strong>
+      <small>Routine records</small>
+    </div>
+    <div class="wf-arrow">&rarr;</div>
+    <div class="wf-step">
+      <strong>2. Clean &amp; Scale</strong>
+      <small>StandardScaler</small>
+    </div>
+    <div class="wf-arrow">&rarr;</div>
+    <div class="wf-step">
+      <strong>3. Model Scoring</strong>
+      <small>Logistic Regression</small>
+    </div>
+    <div class="wf-arrow">&rarr;</div>
+    <div class="wf-step">
+      <strong>4. Risk Triage</strong>
+      <small>High / Med / Low</small>
+    </div>
+    <div class="wf-arrow">&rarr;</div>
+    <div class="wf-step">
+      <strong>5. Explanation</strong>
+      <small>Key drivers + Advice</small>
+    </div>
+    <div class="wf-arrow">&rarr;</div>
+    <div class="wf-step" style="border-color:#16a34a;background:#f0fdf4;">
+      <strong style="color:#16a34a;">6. Teacher Action</strong>
+      <small>Human-led support</small>
+    </div>
+  </div>
+</div>
+
+<!-- Section 7: Evaluation Results -->
+<div class="card" style="margin-bottom:18px;">
+  <h3 style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px;">7. Prototype Evaluation Results (Test Set)</h3>
+  <table style="margin-bottom:12px;">
+    <thead>
+      <tr>
+        <th>Model Architecture</th>
+        <th>Accuracy</th>
+        <th>Precision</th>
+        <th>Recall (Sensitivity)</th>
+        <th>F1-Score</th>
+        <th>ROC-AUC</th>
+        <th>Deployment Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#f0fdf4;font-weight:600;">
+        <td>Logistic Regression</td>
+        <td>0.708</td>
+        <td>0.571</td>
+        <td style="color:#16a34a;">0.744 (Higher)</td>
+        <td>0.646</td>
+        <td>0.796</td>
+        <td><span class="pill Low" style="font-size:11px;">Deployed &bull; Explainable</span></td>
+      </tr>
+      <tr>
+        <td>Random Forest (250 trees)</td>
+        <td>0.758</td>
+        <td>0.667</td>
+        <td>0.651</td>
+        <td>0.659</td>
+        <td>0.811</td>
+        <td><span class="pill" style="background:#e5e7eb;color:#374151;font-size:11px;">Benchmark</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="background:#f8fafc;padding:10px 14px;border-radius:6px;font-size:13px;color:#475569;border-left:3px solid var(--brand-btn);">
+    <strong>5-Fold Cross-Validation F1 (Logistic Regression):</strong> 0.632 &plusmn; 0.023.<br>
+    <em>Rationale:</em> Logistic Regression was selected for active deployment over Random Forest because its <strong>Recall is significantly higher (0.744 vs 0.651)</strong>, which minimizes missed at-risk students, and its mathematical structure enables transparent per-student feature attributions.
+  </div>
+</div>
+
+<!-- Sections 8, 9, 10, 11, 12 -->
+<div class="grid g2" style="margin-bottom:18px;">
+  <div class="card">
+    <h3 style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px;">8. Innovation</h3>
+    <p style="font-size:13.5px;color:#374151;line-height:1.65;">
+      Rather than delivering raw statistical scores, StudyPulse transforms predictions into an <strong>actionable intervention cockpit</strong>:
+    </p>
+    <ul style="padding-left:18px;margin-top:6px;line-height:1.7;font-size:13px;color:#4b5563;">
+      <li>Prioritised cohort triage list focusing educator attention on highest urgency.</li>
+      <li>Instant plain-language explanations identifying the root drivers.</li>
+      <li>Evidence-backed pedagogical intervention suggestions per risk factor.</li>
+      <li>Interactive what-if scenario simulator for goal setting and mentoring.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:12px;">9. Ethics &amp; Responsible AI</h3>
+    <ul style="padding-left:18px;line-height:1.75;font-size:13px;color:#4b5563;">
+      <li><strong>Human-in-the-Loop:</strong> Predictions serve as decision support; teachers make all final decisions.</li>
+      <li><strong>Privacy:</strong> Uses anonymised IDs (S001, etc.); no personally identifiable information (PII) required.</li>
+      <li><strong>Fairness &amp; Bias:</strong> Avoids protected demographic attributes (gender, race, ethnicity).</li>
+      <li><strong>Supportive Stance:</strong> Flags trigger supportive academic interventions, never punitive measures.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="grid g3">
+  <div class="card">
+    <h3 style="font-size:15px;margin-bottom:8px;color:#b91c1c;">10. Current Limitations</h3>
+    <ul style="padding-left:16px;font-size:12.5px;color:#4b5563;line-height:1.6;">
+      <li>Trained on synthetic prototype data; requires real-world institutional validation.</li>
+      <li>Represents a single-point snapshot rather than continuous time-series trajectories.</li>
+      <li>Intervention recommendations are currently rule-based heuristics.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:15px;margin-bottom:8px;color:#1d4ed8;">11. Future Scope</h3>
+    <ul style="padding-left:16px;font-size:12.5px;color:#4b5563;line-height:1.6;">
+      <li>Multi-semester real anonymized dataset validation.</li>
+      <li>Weekly trend analysis on attendance dips and quiz scores.</li>
+      <li>Feedback loop capturing which interventions succeeded.</li>
+      <li>Direct integration with Canvas, Moodle, and Blackboard LMS.</li>
+      <li>Automated early alerts via SMS / email to advisors.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:15px;margin-bottom:8px;color:#15803d;">12. Conclusion</h3>
+    <p style="font-size:12.5px;color:#4b5563;line-height:1.6;">
+      StudyPulse demonstrates that standard academic indicators can be harnessed into an early, explainable warning system that helps educators intervene early. Directly advancing <strong>SDG 4</strong>, it bridges the gap between AI predictive modeling and practical educational support.
+    </p>
+  </div>
+</div>
+
+{% endblock %}
