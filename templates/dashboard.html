@@ -1,18 +1,89 @@
-{% extends "base.html" %}{% block body %}
-<h2>Cohort dashboard</h2><p class="sub">Which students need support first?</p>
-<div class="note">Prototype running on a synthetic dataset - not real student records.</div>
-<div class="grid g4">
-<div class="card kpi"><b>{{ total }}</b><span>Students tracked</span></div>
-<div class="card kpi"><b style="color:var(--hi)">{{ counts.High }}</b><span>High risk</span></div>
-<div class="card kpi"><b>{{ "%.1f"|format(avg_att) }}%</b><span>Average attendance</span></div>
-<div class="card kpi"><b>{{ "%.1f"|format(avg_grade) }}/20</b><span>Average previous grade</span></div></div>
-<div class="grid g2" style="margin-top:16px">
-<div class="card"><h3>Risk distribution</h3>
-{% for lv in ["High", "Medium", "Low"] %}<div style="margin:10px 0"><span class="pill {{lv}}">{{lv}}</span> &nbsp;{{ counts[lv] }} students
-<div class="bar" style="margin-top:5px"><i class="{{lv}}" style="width:{{ (counts[lv]/total*100)|round(1) }}%"></i></div></div>{% endfor %}</div>
-<div class="card"><h3>How it works</h3><p>Each student's recent study behaviour is scored by a logistic-regression model. Students above 60% predicted risk are flagged High, 35-60% Medium. Open a student to see <b>why</b> they were flagged and what support is suggested.</p></div></div>
-<div class="card" style="margin-top:16px"><h3>Top 10 students to contact first</h3>
-<table><tr><th>Student</th><th>Risk</th><th>Level</th><th>Attendance</th><th>Prev. grade</th><th>Failures</th><th></th></tr>
-{% for r in top %}<tr><td>{{ r.student_id }}</td><td>{{ (r.risk_p*100)|round(0)|int }}%</td><td><span class="pill {{ r.risk_level }}">{{ r.risk_level }}</span></td>
-<td>{{ r.attendance_pct }}%</td><td>{{ r.prev_grade }}</td><td>{{ r.past_failures }}</td><td><a href="/student/{{ r.student_id }}">Details</a></td></tr>{% endfor %}</table></div>
+{% extends "base.html" %}
+{% block body %}
+
+<div class="page-header">
+  <h2>Cohort dashboard</h2>
+  <p>Which students need support first?</p>
+</div>
+
+<div class="note">Prototype running on a synthetic dataset – not real student records.</div>
+
+<!-- KPI row -->
+<div class="grid g4" style="margin-bottom:16px">
+  <div class="card kpi">
+    <b>{{ total }}</b>
+    <div class="kpi-label">Students tracked</div>
+  </div>
+  <div class="card kpi">
+    <b class="red">{{ counts.High }}</b>
+    <div class="kpi-label">High risk</div>
+  </div>
+  <div class="card kpi">
+    <b>{{ "%.1f"|format(avg_att) }}%</b>
+    <div class="kpi-label">Average attendance</div>
+  </div>
+  <div class="card kpi">
+    <b>{{ "%.1f"|format(avg_grade) }}/20</b>
+    <div class="kpi-label">Average previous grade</div>
+  </div>
+</div>
+
+<!-- Distribution + How it works -->
+<div class="grid g2" style="margin-bottom:16px">
+  <div class="card">
+    <h3>Risk distribution</h3>
+    {% for lv in ["High", "Medium", "Low"] %}
+    <div class="risk-row">
+      <div class="risk-row-head">
+        <span class="pill {{ lv }}">{{ lv }}</span>
+        <span>{{ counts[lv] }} students</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill {{ lv }}" style="width:{{ (counts[lv]/total*100)|round(1) }}%"></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="card">
+    <h3>How it works</h3>
+    <p style="font-size:13.5px;color:#374151;line-height:1.65">
+      Each student's recent study behaviour is scored by a logistic-regression model.
+      Students above 60% predicted risk are flagged <strong>High</strong>, 35–60% <strong>Medium</strong>.
+      Open a student to see <strong>why</strong> they were flagged and what support is suggested.
+    </p>
+  </div>
+</div>
+
+<!-- Top 10 table -->
+<div class="card">
+  <h3>Top 10 students to contact first</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Risk</th>
+        <th>Level</th>
+        <th>Attendance</th>
+        <th>Prev. grade</th>
+        <th>Failures</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in top %}
+      <tr>
+        <td>{{ r.student_id }}</td>
+        <td>{{ (r.risk_p*100)|round(0)|int }}%</td>
+        <td><span class="pill {{ r.risk_level }}">{{ r.risk_level }}</span></td>
+        <td>{{ r.attendance_pct }}%</td>
+        <td>{{ r.prev_grade }}</td>
+        <td>{{ r.past_failures }}</td>
+        <td><a href="/student/{{ r.student_id }}">Details</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
 {% endblock %}

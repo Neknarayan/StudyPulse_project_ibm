@@ -1,12 +1,52 @@
-{% extends "base.html" %}{% block body %}
-<h2>Student {{ s.student_id }} <span class="pill {{ s.risk_level }}">{{ s.risk_level }} risk</span></h2>
-<p class="sub">Predicted risk of failing: <b>{{ (s.risk_p*100)|round(0)|int }}%</b></p>
-<div class="grid g2">
-<div class="card"><h3>Profile</h3><table>
-{% for f,l in labels.items() %}<tr><td>{{ l }}</td><td><b>{{ s[f] }}</b></td></tr>{% endfor %}</table></div>
-<div class="card"><h3>Why flagged &amp; suggested support</h3>
-{% if factors %}{% for f in factors %}<div style="margin-bottom:12px"><b>{{ f.label }}</b> ({{ f.value|round(1) }}) - raises risk<br><span style="color:var(--mute)">{{ f.advice }}</span></div>{% endfor %}
-{% else %}<p>No factor stands out as raising this student's risk.</p>{% endif %}
-<p style="font-size:12px;color:var(--mute)">Suggestions are a starting point for a teacher or mentor, not a decision.</p></div></div>
-<p><a href="/">&larr; Back to dashboard</a></p>
+{% extends "base.html" %}
+{% block body %}
+
+<div class="page-header">
+  <h2>
+    Student {{ s.student_id }}
+    <span class="pill {{ s.risk_level }}" style="font-size:13px;vertical-align:middle;margin-left:8px">{{ s.risk_level }} risk</span>
+  </h2>
+  <p>Predicted risk of failing: <strong>{{ (s.risk_p*100)|round(0)|int }}%</strong></p>
+</div>
+
+<div class="grid g2" style="margin-bottom:0">
+
+  <!-- Profile -->
+  <div class="card">
+    <h3>Profile</h3>
+    <table class="profile-table">
+      <tbody>
+        {% for f, l in labels.items() %}
+        <tr>
+          <td>{{ l }}</td>
+          <td>{{ s[f] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Why flagged -->
+  <div class="card">
+    <h3>Why flagged &amp; suggested support</h3>
+    {% if factors %}
+      {% for f in factors %}
+      <div class="factor-item">
+        <strong>{{ f.label }}</strong>
+        <span style="color:var(--mute);font-size:13px"> ({{ f.value|round(1) }}) &ndash; raises risk</span>
+        <p>{{ f.advice }}</p>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p style="color:var(--mute);font-size:13.5px">No factor stands out as raising this student's risk.</p>
+    {% endif %}
+    <p style="font-size:12px;color:var(--mute);margin-top:14px;border-top:1px solid var(--border);padding-top:10px">
+      Suggestions are a starting point for a teacher or mentor, not a decision.
+    </p>
+  </div>
+
+</div>
+
+<a class="back-link" href="/">&larr; Back to dashboard</a>
+
 {% endblock %}

@@ -1,9 +1,41 @@
-{% extends "base.html" %}{% block body %}
-<h2>Risk predictor (what-if)</h2><p class="sub">Enter a student's current figures to estimate risk and see what drives it.</p>
-<div class="card"><form method="post"><div class="row">
-{% for f, l in labels.items() %}<div><label>{{ l }}</label><input name="{{ f }}" type="number" step="any" value="{{ vals[f] }}"></div>{% endfor %}
-</div><button type="submit">Predict risk</button></form></div>
-{% if result %}<div class="card" style="margin-top:16px"><h3>Result</h3>
-<div class="big" style="color:var(--{{ {'High':'hi','Medium':'med','Low':'lo'}[result.level]}})">{{ (result.p*100)|round(0)|int }}% <span class="pill {{ result.level }}" style="font-size:15px;vertical-align:middle">{{ result.level }} risk</span></div>
-{% for f in result.factors %}<p><b>{{ f.label }}</b> ({{ f.value|round(1) }}) raises risk. <span style="color:var(--mute)">{{ f.advice }}</span></p>{% endfor %}</div>{% endif %}
+{% extends "base.html" %}
+{% block body %}
+
+<div class="page-header">
+  <h2>Risk predictor (what-if)</h2>
+  <p>Enter a student's current figures to estimate risk and see what drives it.</p>
+</div>
+
+<!-- Input form -->
+<div class="card" style="margin-bottom:16px">
+  <form method="post">
+    <div class="predict-grid">
+      {% for f, l in labels.items() %}
+      <div class="form-field">
+        <label for="field_{{ f }}">{{ l }}</label>
+        <input id="field_{{ f }}" name="{{ f }}" type="number" step="any" value="{{ vals[f] }}">
+      </div>
+      {% endfor %}
+    </div>
+    <button class="btn-predict" type="submit">Predict risk</button>
+  </form>
+</div>
+
+<!-- Result -->
+{% if result %}
+<div class="card">
+  <h3>Result</h3>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+    <span class="result-risk {{ result.level }}">{{ (result.p*100)|round(0)|int }}%</span>
+    <span class="pill {{ result.level }}" style="font-size:13px">{{ result.level }} risk</span>
+  </div>
+  {% for f in result.factors %}
+  <p class="result-factor">
+    <strong>{{ f.label }}</strong> ({{ f.value|round(1) }}) raises risk.
+    <span>{{ f.advice }}</span>
+  </p>
+  {% endfor %}
+</div>
+{% endif %}
+
 {% endblock %}

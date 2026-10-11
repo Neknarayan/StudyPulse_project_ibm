@@ -1,7 +1,30 @@
-{% extends "base.html" %}{% block body %}
-<h2>Dataset loaded</h2><p class="sub">{{ n }} student records, {{ cols|length }} columns. At-risk share: {{ (share*100)|round(1) }}%.</p>
-<div class="note">Synthetic data created by <code>src/data_gen.py</code> so the prototype runs offline. Replace <code>data/students.csv</code> with real data of the same columns for a real evaluation.</div>
-<div class="card"><table><tr>{% for c in cols %}<th>{{ c }}</th>{% endfor %}</tr>
-{% for r in rows %}<tr>{% for c in cols %}<td>{{ r[c] }}</td>{% endfor %}</tr>{% endfor %}</table>
-<p style="color:var(--mute);font-size:13px">Showing first 15 of {{ n }} rows.</p></div>
+{% extends "base.html" %}
+{% block body %}
+
+<div class="page-header">
+  <h2>Dataset loaded</h2>
+  <p>{{ n }} student records, {{ cols|length }} columns. At-risk share: {{ (share*100)|round(1) }}%.</p>
+</div>
+
+<div class="note">
+  Synthetic data created by <code>src/data_gen.py</code> so the prototype runs offline.
+  Replace <code>data/students.csv</code> with real data of the same columns for a real evaluation.
+</div>
+
+<div class="card">
+  <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr>{% for c in cols %}<th>{{ c }}</th>{% endfor %}</tr>
+      </thead>
+      <tbody>
+        {% for r in rows %}
+        <tr>{% for c in cols %}<td>{{ r[c] }}</td>{% endfor %}</tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="table-footer">Showing first 15 of {{ n }} rows.</p>
+</div>
+
 {% endblock %}
