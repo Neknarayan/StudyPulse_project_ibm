@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block body %}
+<h2>Exploratory data analysis</h2><p class="sub">How features relate to the at-risk outcome.</p>
+<div class="grid g3">
+<div class="card"><img src="/static/eda_attendance.png"></div>
+<div class="card"><img src="/static/eda_scatter.png"></div>
+<div class="card"><img src="/static/eda_failures.png"></div></div>
+<div class="card" style="margin-top:16px"><h3>Feature summary</h3>
+<table><tr><th>Feature</th><th>Mean</th><th>Std</th><th>Min</th><th>Median</th><th>Max</th></tr>
+{% for r in summary %}<tr><td>{{ labels[r['index']] }}</td><td>{{ r['mean'] }}</td><td>{{ r['std'] }}</td><td>{{ r['min'] }}</td><td>{{ r['50%'] }}</td><td>{{ r['max'] }}</td></tr>{% endfor %}</table></div>
+{% endblock %}

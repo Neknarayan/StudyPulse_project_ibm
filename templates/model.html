@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block body %}
+<h2>Model training &amp; evaluation</h2>
+<p class="sub">{{ m.dataset.train_rows }} training rows, {{ m.dataset.test_rows }} hold-out test rows (stratified split). Deployed: <b>{{ m.deployed_model }}</b> (chosen for explainability).</p>
+<div class="note">Metrics are measured on the synthetic dataset and show the pipeline works; they are not claims about real students.</div>
+<div class="card"><table><tr><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th><th>ROC-AUC</th></tr>
+{% for name, x in m.models.items() %}<tr><td>{{ name }}</td><td>{{ "%.3f"|format(x.accuracy) }}</td><td>{{ "%.3f"|format(x.precision) }}</td><td>{{ "%.3f"|format(x.recall) }}</td><td>{{ "%.3f"|format(x.f1) }}</td><td>{{ "%.3f"|format(x.roc_auc) }}</td></tr>{% endfor %}</table>
+<p style="font-size:13px;color:var(--mute)">5-fold cross-validated F1 (Logistic Regression): {{ "%.3f"|format(m.cv_f1_mean) }} &plusmn; {{ "%.3f"|format(m.cv_f1_std) }}</p></div>
+<div class="grid g2" style="margin-top:16px">
+<div class="card"><h3>Confusion matrix - {{ m.deployed_model }}</h3>
+{% set cm = m.models[m.deployed_model].confusion_matrix %}
+<table><tr><th></th><th>Pred. OK</th><th>Pred. at risk</th></tr><tr><td><b>Actually OK</b></td><td>{{ cm[0][0] }}</td><td>{{ cm[0][1] }}</td></tr><tr><td><b>Actually at risk</b></td><td>{{ cm[1][0] }}</td><td>{{ cm[1][1] }}</td></tr></table>
+<p style="font-size:13px;color:var(--mute)">Recall matters most: missing an at-risk student costs more than a false alarm.</p></div>
+<div class="card"><img src="/static/eval_coefs.png"></div></div>
+{% endblock %}

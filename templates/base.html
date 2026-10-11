@@ -1,0 +1,9 @@
+<!doctype html><html><head><meta charset="utf-8"><title>StudyPulse</title>
+<link rel="stylesheet" href="/static/style.css"></head><body>
+<nav><h1>StudyPulse</h1><small>Academic risk early-warning</small>
+<a href="/" class="{{ 'on' if page=='dashboard' }}">Dashboard</a>
+<a href="/data" class="{{ 'on' if page=='data' }}">Dataset</a>
+<a href="/eda" class="{{ 'on' if page=='eda' }}">Data analysis</a>
+<a href="/model" class="{{ 'on' if page=='model' }}">Model evaluation</a>
+<a href="/predict" class="{{ 'on' if page=='predict' }}">Risk predictor</a></nav>
+<main>{% block body %}{% endblock %}</main></body></html>

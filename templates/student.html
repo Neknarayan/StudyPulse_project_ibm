@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block body %}
+<h2>Student {{ s.student_id }} <span class="pill {{ s.risk_level }}">{{ s.risk_level }} risk</span></h2>
+<p class="sub">Predicted risk of failing: <b>{{ (s.risk_p*100)|round(0)|int }}%</b></p>
+<div class="grid g2">
+<div class="card"><h3>Profile</h3><table>
+{% for f,l in labels.items() %}<tr><td>{{ l }}</td><td><b>{{ s[f] }}</b></td></tr>{% endfor %}</table></div>
+<div class="card"><h3>Why flagged &amp; suggested support</h3>
+{% if factors %}{% for f in factors %}<div style="margin-bottom:12px"><b>{{ f.label }}</b> ({{ f.value|round(1) }}) - raises risk<br><span style="color:var(--mute)">{{ f.advice }}</span></div>{% endfor %}
+{% else %}<p>No factor stands out as raising this student's risk.</p>{% endif %}
+<p style="font-size:12px;color:var(--mute)">Suggestions are a starting point for a teacher or mentor, not a decision.</p></div></div>
+<p><a href="/">&larr; Back to dashboard</a></p>
+{% endblock %}
